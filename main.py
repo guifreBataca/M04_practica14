@@ -1,15 +1,35 @@
+# Arxiu main on s'utilizen les classes de aquesta activitat i de la anterior.
+
 import json
 
 from guifre.Car import Car
+
+from guifre.user import User
+
+
 from Sebastian.Cat import Cat
 from Sebastian.School import School
+
+# Es fa una llista amb les instàcies de la classe Car.
 cars = [
     Car(4, 758, "opel", "verd"),
-    Car(4, 265, "smart", "vermell")
+    Car(4, 265, "smart", "vermell"),
+    Car(4, 265, "citroen", "blau"),
+    Car(4, 265, "kia", "groc")
 ]
+# S'emmagatzema la llista de cars en forma de diccionari.
 cars_list = [c.to_dict() for c in cars]
 
-# AQUI VAN GATOS
+# Es fa una llista amb les instàcies de la classe User.
+users = [
+    User("masculí", "Guifré", "Salvat", "Pique", "guifre2003", 19),
+    User("femení", "Guifresa", "Salvada", "Picada", "guifresa2003", 19),
+    User("no binari", "Guifrée", "Salvate", "Piquee", "guifree2003", 19),
+    User("massculí", "Gofre", "Salvage", "Picado", "gosapi2003", 19)
+]
+# S'emmagatzema la llista de users en forma de diccionari.
+users_list = [u.to_dict() for u in users]
+data = {"cars":cars_list, "users":users_list}
 
 cats = [
     Cat("Asiatico","2","naranja","macho"),
@@ -34,8 +54,9 @@ data1 = {"cats":cats_list, "schools":schols_list}
 with open ("json_API/b.json", 'w') as file:
     json.dump(data1, file)
 
+# S'agrupen els dos diccionaris
+data = {"cars":cars_list, "users": users_list}
 
-data = {"cars":cars_list} #Añadir aqui
-
+# Es transformen en foormat json i s'escriu a l'arxiu.
 with open("a.json", 'w') as file:
     json.dump(data, file)
